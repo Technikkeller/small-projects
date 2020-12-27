@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Weather App</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+<body>
+  <div id="app">
+      <h1>Weather App</h1>
+      <div id="cityWeather">
+        <div id="cityName"></div>
+        <div id="temperature"></div>
+      </div>
+    <form>
+      <input type="text" placeholder="Enter your city here.." id="cityInput"><br />
+      <div id="units">
+      <input type="radio" id="metric" value="metric" name="units" checked><label for="metric">Celsius</label><br />
+       <input type="radio" id="imperial" value="imperial" name="units"><label for="imperial">Fahrenheit</label><br />
+        <input type="radio" id="standard" value="standard" name="units"><label for="standard">Kelvin</label><br />
+    </div>
+      <button type="button" id="getWeatherButton">Get My Weather</button>
+    </form>
+  </div>
+  <script src="main.js"></script>
+</body>
+</html>

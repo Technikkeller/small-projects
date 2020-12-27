@@ -1,0 +1,29 @@
+body {
+  background-color: #00022e;
+  color: white;
+  background-image: url("../assets/bg.jpg");
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+}
+
+#app {
+  margin: 50px;
+  background-color: white;
+  color:  #00022e;
+  padding: 20px;
+  border-radius: 25px;
+}
+
+#cityInput {
+  border-radius: 10px;
+  border: 1px solid grey;
+  padding: 10px;
+  font-family: 'Poppins', sans-serif;
+  margin-top: 10px;
+}
+
+#units {
+  text-align: left;
+  padding: 15px;
+}
+
