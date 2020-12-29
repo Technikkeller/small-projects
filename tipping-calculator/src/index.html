@@ -3,18 +3,20 @@
 <head>
   <title>Tipping Calculator</title>
   <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-  <div id="app"></div>
+  <div id="app">
   <h1>Tipping Calculator</h1>
   <form>
     <label>
-      Bill Amount
+      <div id="billAmountText">Bill Amount
       <input type="text" id="billAmount">
     </label><br />
     <label>
-      Percentage
+      </div>
+      <div id="percentageText">Percentage
       <select id="percentage">
         <option value="0.30">30%</option>
         <option value="0.25">25%</option>
@@ -27,7 +29,9 @@
     </label>
     <button type="button" id="calculate" onclick="calculateTipAmount()">Calculate</button>
   </form>
+  </div>
   <div>Amount:<span id="tipAmount"></span></div>
+</div>
 </div>
   <script src="main.js"></script>
 </body>
