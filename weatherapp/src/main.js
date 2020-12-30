@@ -4,12 +4,11 @@ document
     event.preventDefault();
     retrieveWeatherInfo();
   });
-// Retrieve data from API by making a call
+
 function retrieveWeatherInfo(e) {
   const apiKey = "b48e954a5eed9632982ee8987daab198";
   const inputValue = document.getElementById("cityInput").value.trim();
   const units = document.querySelector('input[name="units"]:checked').value;
-  // URL to reach API
   const url = `http://api.openweathermap.org/data/2.5/weather?q=${inputValue}&appid=${apiKey}&units=${units}`;
   if (inputValue === "") {
     return alert("Please enter a city");
@@ -17,12 +16,11 @@ function retrieveWeatherInfo(e) {
 
   fetch(url)
     .then((response) => response.json())
-    // When data is returned, we want to create element so the information appears on the page
     .then((data) => {
+      console.log(data);
       if (data.cod != 200) {
         throw new Error(data.message);
       }
-      document.getElementById("cityName").innerHTML = data.name;
       let temperatureSymbol;
       switch (units) {
         case "metric":
@@ -32,16 +30,17 @@ function retrieveWeatherInfo(e) {
           temperatureSymbol = "&deg;F";
           break;
         default:
-          temperatureSymbol = "&deg;K";
+          temperatureSymbol = "K";
       }
       document.getElementById("temperature").innerHTML =
         Math.round(data.main.temp) + temperatureSymbol;
-      // if (units === "metric") {
-      //   document.getElementById("temperature").innerHTML =
-      //     Math.round(data.main.temp) + "&deg;C";
-      // }
+      const weatherIcon = document.getElementById("weatherIconImg");
+      weatherIcon.setAttribute(
+        "src",
+        `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
+      );
     })
     .catch((err) => {
-      return (document.getElementById("temperature").innerHTML = err.message);
+      return (document.getElementById("temperature").innerText = err.message);
     });
 }

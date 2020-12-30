@@ -12,13 +12,17 @@ body {
   color:  #00022e;
   padding: 20px;
   border-radius: 25px;
+  max-width: 500px;
+  margin: auto;
+  opacity: 0.9;
 }
 
 #cityInput {
-  border-radius: 10px;
-  border: 1px solid grey;
+  border: none;
+  border-bottom: 1px solid grey;
   padding: 10px;
   font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
   margin-top: 10px;
 }
 
@@ -27,3 +31,11 @@ body {
   padding: 15px;
 }
 
+#getWeatherButton {
+  background-color: rgb(31, 27, 27);
+  border: none;
+  border-radius: 10px;
+  color: white;
+  padding: 15px;
+   font-family: 'Poppins', sans-serif;
+}
