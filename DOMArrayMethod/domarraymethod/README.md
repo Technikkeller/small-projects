@@ -1,0 +1,2 @@
+# domarraymethod
+A JavaScript project
