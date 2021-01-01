@@ -21,8 +21,8 @@ function addUserRow(user) {
   const cell2 = userRow.insertCell(1);
 
   function getWealth() {
-    let maxDollars = 100000000;
-    let randomnum = Math.floor(Math.random() * maxDollars);
+    let maxDollars = 1500000;
+    let randomnum = Math.floor(Math.random() * maxDollars) + 1;
     return randomnum.toLocaleString();
   }
 
@@ -34,12 +34,37 @@ function addUserRow(user) {
   console.log(user.name.first);
 }
 
-function doubleWealth() {
-  const getCurrentWealth = document.querySelectorAll("currentWealth");
+function cleanWealth(number) {
+  let cleanWealth = number.replace(/\D/g, "");
+  let currentWealth = Number(cleanWealth);
+  return currentWealth;
+}
 
-  // document.querySelectorAll("currentWealth").innerText =
-  Number(number.replace(/[^0-9\.-]+/g, ""));
-  getCurrentWealth.forEach(number);
+function doubleWealth() {
+  const currentWealthElements = document.getElementsByClassName(
+    "currentWealth"
+  );
+
+  for (var i = 0; currentWealthElements[i]; i++) {
+    let currentWealth = cleanWealth(currentWealthElements[i].innerHTML);
+    let newWealth = currentWealth * 2;
+    currentWealthElements[i].innerHTML = "$" + newWealth.toLocaleString();
+  }
+}
+
+function showOnlyMillionaires() {
+  const currentWealthElements = document.getElementsByClassName(
+    "currentWealth"
+  );
+  const table = document.getElementById("userList");
+  var tableRows = table.getElementsbyTagName("tr");
+  var i = 0;
+  var thisRow;
+  for (i = 0; i < tableRows.length; i++) {
+    thisRow = tableRows[i].getElementsbyTagName("td");
+    if (cleanWealth(tableRows[i].innerHTML) < 1000000) {
+    }
+  }
 }
 
 addUserButton.addEventListener("click", retrieveUser);
