@@ -1,6 +1,7 @@
 // Add user
 const addUserButton = document.getElementById("add-user");
 const doubleMoney = document.getElementById("double");
+const showMillionaires = document.getElementById("show-millionaires");
 
 function retrieveUser() {
   fetch("https://randomuser.me/api", {
@@ -35,37 +36,27 @@ function addUserRow(user) {
 }
 
 function cleanWealth(number) {
-  let cleanWealth = number.replace(/\D/g, "");
+  let cleanWealth = number.replace(/[^a-zA-Z0-9]/g, "");
   let currentWealth = Number(cleanWealth);
+  console.log(currentWealth);
   return currentWealth;
 }
 
 function doubleWealth() {
-  const currentWealthElements = document.getElementsByClassName(
-    "currentWealth"
-  );
-
-  for (var i = 0; currentWealthElements[i]; i++) {
-    let currentWealth = cleanWealth(currentWealthElements[i].innerHTML);
-    let newWealth = currentWealth * 2;
-    currentWealthElements[i].innerHTML = "$" + newWealth.toLocaleString();
-  }
+  const elements = [...document.getElementsByClassName("currentWealth")];
+  elements.forEach((row) => {
+    const cleanNum = cleanWealth(row.innerText);
+    const double = cleanNum * 2;
+    row.innerText = "$" + double.toLocaleString();
+  });
 }
 
 function showOnlyMillionaires() {
-  const currentWealthElements = document.getElementsByClassName(
-    "currentWealth"
-  );
-  const table = document.getElementById("userList");
-  var tableRows = table.getElementsbyTagName("tr");
-  var i = 0;
-  var thisRow;
-  for (i = 0; i < tableRows.length; i++) {
-    thisRow = tableRows[i].getElementsbyTagName("td");
-    if (cleanWealth(tableRows[i].innerHTML) < 1000000) {
-    }
-  }
+  [...document.getElementsByTagName("tr")].forEach((row) => {
+    if (cleanWealth(row.cells[1].innerText) < 1000000) row.remove();
+  });
 }
 
+showMillionaires.addEventListener("click", showOnlyMillionaires);
 addUserButton.addEventListener("click", retrieveUser);
 doubleMoney.addEventListener("click", doubleWealth);
