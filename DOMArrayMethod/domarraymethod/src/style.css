@@ -44,32 +44,29 @@ main {
   padding: 10px 20px;
 }
 
-h2 {
-  border-bottom: 1px solid #111;
-  padding-bottom: 10px;
-  display: flex;
-  justify-content: space-between;
-  font-weight: 300;
-  margin: 0 0 20px;
-}
-
-h3 {
-  background-color: #fff;
-  border-bottom: 1px solid #111;
-  padding: 10px;
-  display: flex;
-  justify-content: space-between;
-  font-weight: 300;
-  margin: 20px 0 0;
-}
-
-.person {
-  display: flex;
-  justify-content: space-between;
-  font-size: 20px;
-  margin-bottom: 10px;
-}
-
-#userList {
+table#userList {
   width: 100%;
+  border-collapse: collapse;
+}
+table#userList > thead > tr:nth-child(1) {
+  font-weight: 300;
+  font-size: x-large;
+  border-bottom: 1px solid #111;
+}
+
+table#userList > thead > tr:nth-child(1) > th {
+  padding-bottom:  10px;
+}
+
+table#userList > thead > tr:nth-child(2) {
+  height: 20px
+}
+
+table#userList > thead > tr:nth-child(1) > th:nth-child(1) {
+  text-align: left;
+}
+
+table#userList > thead > tr > th:nth-child(2),
+table#userList > tbody > tr > td:nth-child(2) {
+  text-align: right;
 }
